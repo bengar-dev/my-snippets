@@ -1,0 +1,11 @@
+{
+  "name": "my-snippets",
+  "version": "1.0.0",
+  "description": "handle your snippets",
+  "main": "index.js",
+  "scripts": {
+    "db:pg": "docker-compose up"
+  },
+  "author": "",
+  "license": "ISC"
+}

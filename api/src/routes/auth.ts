@@ -1,8 +1,10 @@
 import { Router, Request, Response } from "express";
 import passport from "passport";
+import AuthControllers from "@/controllers/auth";
 
 class AuthRoutes {
   public router: Router;
+  private authControllers = AuthControllers;
 
   constructor() {
     this.router = Router();
@@ -16,14 +18,11 @@ class AuthRoutes {
         scope: ["user:email"],
       })
     );
+
     this.router.get(
       "/callback",
       passport.authenticate("github", { failureRedirect: "/login" }),
-      (req, res) => {
-        return res
-          .status(200)
-          .json({ message: "Hello world", status: { code: 200 } });
-      }
+      this.authControllers.authCallback
     );
   }
 }
