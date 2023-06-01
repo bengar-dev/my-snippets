@@ -1,10 +1,10 @@
-import type { Strategy as GithubStrategy } from "passport-github";
 import * as jwt from "jsonwebtoken";
+import { User } from "@prisma/client";
 
 class JwtServices {
   constructor() {}
 
-  public async createJwt(profile: GithubStrategy.Profile) {
+  public async createJwt(profile: User) {
     if (!profile) throw new Error("profile is required");
 
     return jwt.sign({ userId: profile.id }, "Euziaeuziaheuaz", {

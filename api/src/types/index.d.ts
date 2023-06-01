@@ -1,10 +1,9 @@
-import session from "express-session";
-import type { Strategy as GithubStrategy } from "passport-github";
+import { User } from "@prisma/client";
 
 declare module "express-session" {
   export interface SessionData {
     passport: {
-      user: GithubStrategy.Profile;
+      user: User;
     };
   }
 }

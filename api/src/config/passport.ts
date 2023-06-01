@@ -24,36 +24,32 @@ class Passport {
             "http://localhost:3300/api/auth/callback",
         },
         async function (accessToken, refreshToken, profile, cb) {
-          const getUser = await prisma.user.findUnique({
+          const getUser = (await prisma.user.findUnique({
             where: { githubId: profile.id },
-          });
+          }))
+            ? await prisma.user.update({
+                where: { githubId: profile.id },
+                data: {
+                  githubId: profile.id,
+                  username: profile.username,
+                  displayName: profile.displayName,
+                  profileUrl: profile.profileUrl,
+                  avatarUrl: profile.photos![0].value,
+                  accessToken,
+                },
+              })
+            : await prisma.user.create({
+                data: {
+                  githubId: profile.id,
+                  username: profile.username,
+                  displayName: profile.displayName,
+                  profileUrl: profile.profileUrl,
+                  avatarUrl: profile.photos![0].value,
+                  accessToken,
+                },
+              });
 
-          if (!getUser) {
-            await prisma.user.create({
-              data: {
-                githubId: profile.id,
-                username: profile.username,
-                displayName: profile.displayName,
-                profileUrl: profile.profileUrl,
-                avatarUrl: profile.photos![0].value,
-                accessToken,
-              },
-            });
-          } else {
-            await prisma.user.update({
-              where: { githubId: profile.id },
-              data: {
-                githubId: profile.id,
-                username: profile.username,
-                displayName: profile.displayName,
-                profileUrl: profile.profileUrl,
-                avatarUrl: profile.photos![0].value,
-                accessToken,
-              },
-            });
-          }
-
-          return cb(null, profile);
+          return cb(null, getUser);
         }
       )
     );

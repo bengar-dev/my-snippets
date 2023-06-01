@@ -28,7 +28,7 @@ class App {
     );
     this.app.use(
       cors({
-        origin: [process.env.APP_HOST || "http://localhost:3000"],
+        origin: [process.env.APP_HOST || "http://localhost:3300"],
         credentials: true,
       })
     );
