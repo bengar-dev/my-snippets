@@ -24,6 +24,8 @@ class AuthRoutes {
       passport.authenticate("github", { failureRedirect: "/login" }),
       this.authControllers.authCallback
     );
+
+    this.router.get("/me", this.authControllers.getUserProfil);
   }
 }
 

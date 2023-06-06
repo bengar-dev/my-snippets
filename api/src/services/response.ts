@@ -22,6 +22,19 @@ class ResponseServices {
   public throwError(res: Response, message: string, code: number = 500) {
     return this.error(res, message, code);
   }
+
+  public filterData(data: any, keysArray: string[]) {
+    let result: any = {};
+    for (const el in data) {
+      if (!keysArray.includes(el)) {
+        result = {
+          ...result,
+          [el]: data[el],
+        };
+      }
+    }
+    return result;
+  }
 }
 
 export default ResponseServices;

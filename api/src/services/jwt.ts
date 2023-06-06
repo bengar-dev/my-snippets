@@ -4,12 +4,27 @@ import { User } from "@prisma/client";
 class JwtServices {
   constructor() {}
 
-  public async createJwt(profile: User) {
+  public async createJwt(profile: User): Promise<string> {
     if (!profile) throw new Error("profile is required");
 
-    return jwt.sign({ userId: profile.id }, "Euziaeuziaheuaz", {
-      expiresIn: "24h",
-    });
+    return jwt.sign(
+      { userId: profile.id },
+      process.env.API_TOKEN_JWT_KEY || "tokenKey",
+      {
+        expiresIn: "24h",
+      }
+    );
+  }
+
+  public async verifyJwt(
+    token: string
+  ): Promise<string | jwt.JwtPayload | false> {
+    try {
+      if (!token) throw new Error("token is required");
+      return jwt.verify(token, process.env.API_TOKEN_JWT_KEY || "tokenKey");
+    } catch (err) {
+      return false;
+    }
   }
 }
 
