@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "name": "JavaScript",
+      "logo": "javascript"
+    },
+    {
+      "name": "TypeScript",
+      "logo": "typescript"
+    },
+    {
+      "name": "React",
+      "logo": "react"
+    },
+    {
+      "name": "Python",
+      "logo": "python"
+    },
+    {
+      "name": "Docker",
+      "logo": "docker"
+    },
+    {
+      "name": "Bash",
+      "logo": "bash"
+    },
+    {
+      "name": "Java",
+      "logo": "java"
+    }
+  ]
+}
