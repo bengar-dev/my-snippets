@@ -17,7 +17,7 @@ export const Header = () => {
   }, [data, error, navigate]);
 
   return (
-    <header className="h-20 p-4 bg-violet-950 text-slate-200 flex justify-between items-center">
+    <header className="absolute top-0 w-full h-20 p-4 bg-violet-950 text-slate-200 flex justify-between items-center">
       <div className="flex space-x-2 items-center">
         <AiOutlineCode className="text-2xl text-white" />
         <span>

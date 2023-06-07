@@ -3,5 +3,5 @@ interface Props {
 }
 
 export const Main: React.FC<Props> = ({ children }) => {
-  return <div>{children}</div>;
+  return <div className="relative">{children}</div>;
 };
