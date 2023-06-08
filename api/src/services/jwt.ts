@@ -16,12 +16,12 @@ class JwtServices {
     );
   }
 
-  public async verifyJwt(
-    token: string
-  ): Promise<string | jwt.JwtPayload | false> {
+  public async verifyJwt(token: string): Promise<{ userId: string } | false> {
     try {
       if (!token) throw new Error("token is required");
-      return jwt.verify(token, process.env.API_TOKEN_JWT_KEY || "tokenKey");
+      return jwt.verify(token, process.env.API_TOKEN_JWT_KEY || "tokenKey") as {
+        userId: string;
+      };
     } catch (err) {
       return false;
     }
