@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useQuery } from "react-query";
 import { useRecoilState } from "recoil";
 import { userProfilState } from "../../atoms/user.atoms";

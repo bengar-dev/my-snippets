@@ -19,6 +19,11 @@ class SnippetsRoutes {
       this.AuthMiddleware.verifyAuth,
       this.SnippetsControllers.getAllSnippets
     );
+    this.router.post(
+      "/",
+      this.AuthMiddleware.verifyAuth,
+      this.SnippetsControllers.createSnippet
+    );
   }
 }
 

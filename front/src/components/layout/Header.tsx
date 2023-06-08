@@ -19,9 +19,9 @@ export const Header = () => {
   return (
     <header className="absolute top-0 w-full h-20 p-4 bg-violet-950 text-slate-200 flex justify-between items-center">
       <div className="flex space-x-2 items-center">
-        <AiOutlineCode className="text-2xl text-white" />
-        <span>
-          my<span className="font-bold">S</span>nippets
+        <AiOutlineCode className="text-2xl text-violet-400" />
+        <span className="text-2xl font-bold">
+          My<span>Snippets</span>
         </span>
       </div>
       {data && (
