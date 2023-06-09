@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useRecoilState } from "recoil";
 import { userProfilState } from "../../atoms/user.atoms";
 import { User } from "../../types/user/user.types";
 import { Response } from "../../types/common.types";
 
 export const useGetProfil = () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   const [userProfil, setUserProfil] = useRecoilState(userProfilState);
 
   return useQuery({

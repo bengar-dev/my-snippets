@@ -1,6 +1,10 @@
 {
   "data": [
     {
+      "name": "PHP",
+      "logo": "php"
+    },
+    {
       "name": "JavaScript",
       "logo": "javascript"
     },
@@ -11,6 +15,14 @@
     {
       "name": "React",
       "logo": "react"
+    },
+    {
+      "name": "Vue",
+      "logo": "vue"
+    },
+    {
+      "name": "Svelte",
+      "logo": "svelte"
     },
     {
       "name": "Python",

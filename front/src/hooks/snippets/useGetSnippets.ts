@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Response } from "../../types/common.types";
 import { Snippet } from "../../types/snippet/snippet.types";
 import { useRecoilState } from "recoil";
 import { snippetsState } from "../../atoms/snippets.atoms";
 
 export const useGetSnippets = () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   const [snippets, setSnippets] = useRecoilState(snippetsState);
 
   return useQuery({

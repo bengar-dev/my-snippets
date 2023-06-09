@@ -5,13 +5,12 @@ import { MainContent } from "../templates/MainContent";
 import { snippetsState } from "../atoms/snippets.atoms";
 import { useEffect, useState } from "react";
 import { Snippet as SnippetType } from "../types/snippet/snippet.types";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { SnippetCard } from "../components/ui/SnippetCard";
 
 export const Snippet: React.FC = () => {
-  const navigate = useNavigate();
   const params = useParams();
-  const [snippet, setSnippet] = useRecoilState(snippetsState);
+  const [snippet] = useRecoilState(snippetsState);
   const [preview, setPreview] = useState<SnippetType[]>([]);
 
   /**

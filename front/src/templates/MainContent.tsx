@@ -6,7 +6,7 @@ import { Language } from "../types/language/language.types";
 import { VscTerminalBash } from "react-icons/vsc";
 import { SiJavascript, SiTypescript } from "react-icons/si";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { FaReact } from "react-icons/fa";
+import { FaDocker, FaJava, FaPython, FaReact } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
 interface Props {
@@ -18,8 +18,10 @@ export const MainContent: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate();
   const params = useParams();
 
+  console.log("snippets", snippets);
+
   return (
-    <div className="bg-slate-950 min-h-screen text-slate-200 pt-20">
+    <div className="bg-slate-950 min-h-screen text-slate-200 py-20">
       <nav className="px-6 w-full h-20 flex space-x-4 items-center justify-end">
         <Button
           type="button"
@@ -62,6 +64,12 @@ function reduceLanguageArray(snippets?: Snippet[]): Language[] {
 
 function handleLanguageIcons(language: Language) {
   switch (language.logo) {
+    case "docker":
+      return <FaDocker />;
+    case "java":
+      return <FaJava />;
+    case "python":
+      return <FaPython />;
     case "react":
       return <FaReact />;
     case "typescript":

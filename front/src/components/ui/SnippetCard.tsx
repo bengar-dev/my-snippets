@@ -4,6 +4,7 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "./Button";
 
 import { BiCopy } from "react-icons/bi";
+import { BsFiletypePng } from "react-icons/bs";
 
 interface Props {
   title: string;
@@ -22,13 +23,15 @@ export const SnippetCard: React.FC<Props> = ({ code, title }) => {
       <>
         <div className="flex items-center justify-between">
           <h2 className="font-bold">{title}</h2>
-          <Button
-            type="button"
-            icon={<BiCopy />}
-            value="Copy"
-            variant="github"
-            func={() => handleCopyMarkdownText(code)}
-          />
+          <div className="flex space-x-1 items-center">
+            <Button type="button" icon={<BsFiletypePng />} variant="disabled" />
+            <Button
+              type="button"
+              icon={<BiCopy />}
+              variant="github"
+              func={() => handleCopyMarkdownText(code)}
+            />
+          </div>
         </div>
         <ReactMarkdown
           children={code}

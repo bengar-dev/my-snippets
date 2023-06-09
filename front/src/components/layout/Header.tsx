@@ -24,6 +24,9 @@ export const Header = () => {
           My<span>Snippets</span>
         </span>
       </div>
+      <div className="font-medium text-base text-yellow-200">
+        <p>⚠️ This is a beta version, more features are comming</p>
+      </div>
       {data && (
         <div className="flex items-center space-x-2">
           <img

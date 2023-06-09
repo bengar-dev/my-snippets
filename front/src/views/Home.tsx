@@ -1,3 +1,4 @@
+import { AddSnippet } from "../components/form/AddSnippet";
 import { Header } from "../components/layout/Header";
 import { Main } from "../templates/Main";
 import { MainContent } from "../templates/MainContent";
@@ -7,7 +8,7 @@ export const Home: React.FC = () => {
     <Main>
       <Header />
       <MainContent>
-        <p>Home content</p>
+        <AddSnippet />
       </MainContent>
     </Main>
   );

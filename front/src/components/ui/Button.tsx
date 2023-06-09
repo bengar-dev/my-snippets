@@ -1,3 +1,5 @@
+import { RiLoader5Fill } from "react-icons/ri";
+
 interface Props {
   type: "submit" | "button";
   value?: string;
@@ -6,14 +8,16 @@ interface Props {
   func?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   shadow?: boolean;
   active?: boolean;
+  loading?: boolean;
 }
 
-type VariantButton = "github" | "primary" | "outline-primary";
+type VariantButton = "github" | "primary" | "outline-primary" | "disabled";
 
 export const Button: React.FC<Props> = ({
   active = false,
   icon,
   func,
+  loading = false,
   shadow,
   type,
   variant,
@@ -23,7 +27,7 @@ export const Button: React.FC<Props> = ({
     <button
       type={type}
       onClick={(event) => {
-        if (func) {
+        if (func && variant !== "disabled") {
           func(event);
         }
       }}
@@ -32,8 +36,14 @@ export const Button: React.FC<Props> = ({
         variant
       )} ${shadow ? " hover:shadow-lg" : ""}`}
     >
-      {icon && icon}
-      <span>{value}</span>
+      {loading ? (
+        <RiLoader5Fill className="animate-spin text-2xl" />
+      ) : (
+        <>
+          {icon && icon}
+          {value && <span>{value}</span>}
+        </>
+      )}
     </button>
   );
 };
@@ -44,6 +54,8 @@ function handleStyle(active: boolean, variant?: VariantButton) {
       return "bg-stone-700 hover:bg-stone-600";
     case "primary":
       return "bg-violet-500 hover:bg-violet-700";
+    case "disabled":
+      return "bg-gray-400 cursor-not-allowed";
     case "outline-primary":
       return `${
         active

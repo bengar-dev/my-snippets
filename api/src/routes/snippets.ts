@@ -19,6 +19,7 @@ class SnippetsRoutes {
       this.AuthMiddleware.verifyAuth,
       this.SnippetsControllers.getAllSnippets
     );
+    this.router.get("/languages", this.SnippetsControllers.getAllLanguages);
     this.router.post(
       "/",
       this.AuthMiddleware.verifyAuth,

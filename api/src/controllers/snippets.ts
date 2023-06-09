@@ -1,13 +1,19 @@
-import { Snippets, User } from "@prisma/client";
+import { Language, Snippets, User } from "@prisma/client";
 import Controllers from ".";
 import { Request, Response } from "express";
+import SnippetService from "@/services/snippet";
 
 class SnippetsControllers extends Controllers {
+  private snippets: SnippetService;
+
   constructor() {
     super();
 
+    this.snippets = new SnippetService();
+
     this.getAllSnippets = this.getAllSnippets.bind(this);
     this.createSnippet = this.createSnippet.bind(this);
+    this.getAllLanguages = this.getAllLanguages.bind(this);
   }
 
   public async createSnippet(
@@ -24,16 +30,21 @@ class SnippetsControllers extends Controllers {
         return this.response.throwError(res, "language not found", 404);
       }
 
-      const createSnipper = await this.services.prisma.snippets.create({
+      const transformStringToMd = await this.snippets.transformStringToMarkdown(
+        code,
+        getLanguage.logo
+      );
+
+      const createSnippet = await this.services.prisma.snippets.create({
         data: {
           title,
-          code,
+          code: transformStringToMd,
           languageId,
           userId: user.id,
         },
       });
 
-      return this.response.success(res, createSnipper, 201);
+      return this.response.success(res, createSnippet, 201);
     } catch (err: any) {
       return this.response.error(res, err.message, 500);
     }
@@ -55,6 +66,22 @@ class SnippetsControllers extends Controllers {
       }
 
       return this.response.success(res, getAllSnippets, 200);
+    } catch (err: any) {
+      return this.response.error(res, err.message, 500);
+    }
+  }
+
+  public async getAllLanguages(
+    req: Request,
+    res: Response
+  ): Promise<Response<Language>> {
+    try {
+      const getAllLanguages = await this.services.prisma.language.findMany();
+      if (getAllLanguages.length === 0) {
+        return this.response.throwError(res, "languages not found", 404);
+      }
+
+      return this.response.success(res, getAllLanguages, 200);
     } catch (err: any) {
       return this.response.error(res, err.message, 500);
     }
