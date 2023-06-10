@@ -21,6 +21,8 @@ If you'd like to give it a try, you'll need a **GitHub account for authenticatio
 - Side menu to get overview of language's snippets.
 - Confirm modal
 - Notification service
+- Tags system for snippets
+- Research by title + tags
 
 ### Technologies
 
