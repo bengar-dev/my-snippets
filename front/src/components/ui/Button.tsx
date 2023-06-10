@@ -11,7 +11,12 @@ interface Props {
   loading?: boolean;
 }
 
-type VariantButton = "github" | "primary" | "outline-primary" | "disabled";
+type VariantButton =
+  | "github"
+  | "primary"
+  | "outline-primary"
+  | "delete"
+  | "disabled";
 
 export const Button: React.FC<Props> = ({
   active = false,
@@ -54,6 +59,8 @@ function handleStyle(active: boolean, variant?: VariantButton) {
       return "bg-stone-700 hover:bg-stone-600";
     case "primary":
       return "bg-violet-500 hover:bg-violet-700";
+    case "delete":
+      return "bg-red-500 hover:bg-red-700";
     case "disabled":
       return "bg-gray-400 cursor-not-allowed";
     case "outline-primary":

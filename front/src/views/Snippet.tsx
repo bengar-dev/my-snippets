@@ -33,6 +33,7 @@ export const Snippet: React.FC = () => {
           {preview.map((el, index) => (
             <SnippetCard
               key={el.id}
+              id={el.id}
               code={el.code}
               title={el.title}
               isOpen={index === 0}

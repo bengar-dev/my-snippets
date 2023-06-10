@@ -6,27 +6,43 @@ import { Button } from "./Button";
 import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
-import { BiCopy } from "react-icons/bi";
+import { BiCopy, BiTrash } from "react-icons/bi";
 import { BsFiletypePng } from "react-icons/bs";
+import { useDeleteSnipper } from "../../hooks/snippets/useDeleteSnippet";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   title: string;
   code: string;
+  id?: string;
   isOpen?: boolean;
 }
 
 export const SnippetCard: React.FC<Props> = ({
+  id,
   code,
   isOpen = false,
   title,
 }) => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState<boolean>(isOpen);
+  const { mutateAsync } = useDeleteSnipper();
 
   const handleCopyMarkdownText = (text: string) => {
     if (!text) return;
     const filterToCopyCode = text.replace(/```/g, "");
     navigator.clipboard.writeText(filterToCopyCode);
     toast.success("Copied to clipboard");
+  };
+
+  const handleDeleteSnippet = () => {
+    if (!id) return;
+    toast.promise(mutateAsync(id), {
+      loading: "Deleting snippet...",
+      success: "Snippet deleted",
+      error: "Error while deleting snippet",
+    });
+    navigate("/");
   };
 
   return (
@@ -47,20 +63,26 @@ export const SnippetCard: React.FC<Props> = ({
             </div>
           </h2>
           <div className="flex space-x-1 items-center">
-            <div className="tooltip tooltip-info" data-tip="soon">
-              <Button
-                type="button"
-                icon={<BsFiletypePng />}
-                variant="disabled"
-                func={() => toast.error("Feature not available yet")}
-              />
-            </div>
-            <div className="tooltip tooltip-info" data-tip="copy">
+            <Button
+              type="button"
+              icon={<BsFiletypePng />}
+              variant="disabled"
+              func={() => toast.error("Feature not available yet")}
+            />
+            <div className="tooltip" data-tip="copy">
               <Button
                 type="button"
                 icon={<BiCopy />}
                 variant="github"
                 func={() => handleCopyMarkdownText(code)}
+              />
+            </div>
+            <div className="tooltip tooltip-error" data-tip="delete">
+              <Button
+                type="button"
+                icon={<BiTrash />}
+                variant="delete"
+                func={handleDeleteSnippet}
               />
             </div>
           </div>
