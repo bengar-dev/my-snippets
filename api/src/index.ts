@@ -39,9 +39,9 @@ class App {
   }
 
   private start(): void {
-    this.app.listen(process.env.API_PORT, () => {
+    this.app.listen(process.env.PORT || "3300", () => {
       console.log("🚀 Server is launching...");
-      console.log("🔴 Running on port : " + process.env.API_PORT || "3300");
+      console.log("🔴 Running on port : " + process.env.PORT || "3300");
     });
   }
 }

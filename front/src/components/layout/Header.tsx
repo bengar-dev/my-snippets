@@ -25,7 +25,7 @@ export const Header = () => {
         </span>
       </div>
       <div className="font-medium text-base text-yellow-200">
-        <p>⚠️ This is a beta version, more features are comming</p>
+        <p>⚠️ This is a beta version, more features are coming</p>
       </div>
       {data && (
         <div className="flex items-center space-x-2">
