@@ -3,6 +3,8 @@ import Cookies from "js-cookie";
 import { AiOutlineCode } from "react-icons/ai";
 import { useGetProfil } from "../../hooks/user/useGetProfil";
 import { useNavigate } from "react-router-dom";
+import { DropdownMenu } from "../ui/DropdownMenu";
+import { ToasterNotif } from "../ui/ToasterNotif";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ export const Header = () => {
 
   return (
     <header className="absolute top-0 w-full h-20 p-4 bg-violet-950 text-slate-200 flex justify-between items-center">
+      <ToasterNotif />
       <div className="flex space-x-2 items-center">
         <AiOutlineCode className="text-2xl text-violet-400" />
         <span className="text-2xl font-bold">
@@ -29,12 +32,16 @@ export const Header = () => {
       </div>
       {data && (
         <div className="flex items-center space-x-2">
-          <img
-            src={data.data.avatarUrl}
-            alt="avatar"
-            className="w-12 h-12 rounded-full"
-          />
-          <span className="font-bold">{data.data.username}</span>
+          <DropdownMenu>
+            <>
+              <img
+                src={data.data.avatarUrl}
+                alt="avatar"
+                className="w-12 h-12 rounded-full"
+              />
+              <span className="font-bold">{data.data.username}</span>
+            </>
+          </DropdownMenu>
         </div>
       )}
     </header>

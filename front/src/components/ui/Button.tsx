@@ -27,7 +27,7 @@ export const Button: React.FC<Props> = ({
     <button
       type={type}
       onClick={(event) => {
-        if (func && variant !== "disabled") {
+        if (func) {
           func(event);
         }
       }}

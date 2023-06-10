@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { AiOutlineSave } from "react-icons/ai";
 import { useGetLanguages } from "../../hooks/languages/useGetLanguages";
 import { Button } from "../ui/Button";
@@ -24,7 +25,11 @@ export const AddSnippet: React.FC = () => {
   });
 
   const onSubmit = async (data: Snippet) => {
-    await mutateAsync(data);
+    toast.promise(mutateAsync(data), {
+      loading: "Loading",
+      success: "Snippet add successfully",
+      error: "Error while adding snippet",
+    });
     reset();
   };
 
@@ -38,25 +43,32 @@ export const AddSnippet: React.FC = () => {
       </h1>
       {languages?.data && languages.data.length > 0 && (
         <>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <InputValue type="text" label="Title" field={field} />
-            )}
-          />
-          <Controller
-            name="languageId"
-            control={control}
-            render={({ field }) => (
-              <InputSelect
-                defaultValues="Select a language"
-                label="Language"
-                values={languages.data}
-                field={field}
+          <div className="w-full flex items-center space-x-2">
+            <div className="w-2/3">
+              <Controller
+                name="title"
+                control={control}
+                render={({ field }) => (
+                  <InputValue type="text" label="Title" field={field} />
+                )}
               />
-            )}
-          />
+            </div>
+            <div className="w-1/3">
+              <Controller
+                name="languageId"
+                control={control}
+                render={({ field }) => (
+                  <InputSelect
+                    defaultValues="Select a language"
+                    label="Language"
+                    values={languages.data}
+                    field={field}
+                  />
+                )}
+              />
+            </div>
+          </div>
+
           <Controller
             name="code"
             control={control}

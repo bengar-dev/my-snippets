@@ -13,10 +13,6 @@ export const Snippet: React.FC = () => {
   const [snippet] = useRecoilState(snippetsState);
   const [preview, setPreview] = useState<SnippetType[]>([]);
 
-  /**
-   * si snippet a des données et que preview est vide alors
-   */
-
   useEffect(() => {
     if (snippet.length > 0 && preview.length === 0) {
       setPreview(snippet.filter((el) => el.language?.logo === params.name));
@@ -34,8 +30,13 @@ export const Snippet: React.FC = () => {
       <Header />
       <MainContent>
         <div className="mt-8 flex flex-col gap-6 items-center justify-center w-1/2 mx-auto">
-          {preview.map((el) => (
-            <SnippetCard key={el.id} code={el.code} title={el.title} />
+          {preview.map((el, index) => (
+            <SnippetCard
+              key={el.id}
+              code={el.code}
+              title={el.title}
+              isOpen={index === 0}
+            />
           ))}
         </div>
       </MainContent>
