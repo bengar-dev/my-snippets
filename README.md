@@ -6,7 +6,7 @@ Initially, it was a personal tool that I decided to release for all developer us
 
 If you'd like to give it a try, you'll need a **GitHub account for authentication**. Once you have an account, adding your first snippet will be a breeze. There are numerous languages available, such as **JavaScript, TypeScript, Python, Docker, Bash, Java, PHP**, and more languages are being added regularly.
 
-<u>Live beta application is available here</u> : [https://my-snippets-alpha.vercel.app](mysnippets)
+<u>Live beta application is available here</u> : [my-snippets](https://my-snippets-alpha.vercel.app)
 
 #### Available features
 
