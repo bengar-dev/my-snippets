@@ -23,5 +23,6 @@ export const useGetSnippets = () => {
       setSnippets(data.data);
     },
     refetchOnWindowFocus: false,
+    retry: false,
   });
 };
