@@ -18,8 +18,6 @@ export const MainContent: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate();
   const params = useParams();
 
-  console.log("snippets", snippets);
-
   return (
     <div className="bg-slate-950 min-h-screen text-slate-200 py-20">
       <nav className="px-6 w-full h-20 flex space-x-4 items-center justify-end">
