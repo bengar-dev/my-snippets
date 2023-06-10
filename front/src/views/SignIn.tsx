@@ -20,10 +20,7 @@ export const SignIn: React.FC = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    /**
-     * TODO: add host api to .env
-     */
-    window.location.href = "https://mysnippets-api.herokuapp.com/api/auth/sign";
+    window.location.href = import.meta.env.VITE_API_URL + "auth/sign";
   };
 
   return (
