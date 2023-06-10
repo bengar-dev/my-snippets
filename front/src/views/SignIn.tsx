@@ -23,7 +23,7 @@ export const SignIn: React.FC = () => {
     /**
      * TODO: add host api to .env
      */
-    window.location.href = "http://localhost:3300/api/auth/sign";
+    window.location.href = "https://mysnippets-api.herokuapp.com/api/auth/sign";
   };
 
   return (
