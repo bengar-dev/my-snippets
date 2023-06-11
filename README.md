@@ -12,55 +12,31 @@ If you have any suggestions for improvement, please let me know.
 
 <u>Live beta application is available here</u> : **[my-snippets](https://my-snippets-alpha.vercel.app)**
 
-#### Available features
-
-- Add snippet
-- Organise snippets by languages
-- Copy saved snippet
-
 #### Features
 
-<li>GitHub Authentification ✅</li>
-<li>Logout route ✅</li>
-<li>Create snippet ✅</li>
-<li>Snippet card with syntax highlighting ✅</li>
-<li>Delete snippet ✅</li>
-<li>Copy code snippet button ✅</li>
-<li>Side menu to get an snippet's overview ✅</li>
-<li>Add confirmation modal while deleting</li>
-<li>Update UI for create snippet form</li>
-<li>Make the app responsive for mobil</li>
-<li>Possibilty to tag your snippet</li>
-<li>Research system by title and tags</li>
-<li>Organize snipets order</li>
-<li>Download .png snippet directly</li>
-<li>Edit snippet</li>
-<li>User custom settings like Syntax highlight</li>
-<li>Update security points</li>
-<li>Add translates keys i18n</li>
-<li>Creating Landing page</li>
-<li>Find Offers plan</li>
-<li>🚀 Run in production the app !</li>             
+- GitHub Authentification ✅
+- Logout route ✅
+- Create snippet ✅
+- Snippet card with syntax highlighting ✅
+- Delete snippet ✅
+- Copy code snippet button ✅
+- Side menu to get an snippet's overview ✅
+- Add confirmation modal while deleting
+- Update UI for create snippet form
+- Make the app responsive for mobil
+- Possibilty to tag your snippet
+- Research system by title and tags
+- Organize snipets order
+- Download .png snippet directly
+- Edit snippet
+- User custom settings like Syntax highlight
+- Update security points
+- Add translates keys i18n
+- Creating Landing page
+- Find Offers plan
+- 🚀 Run in production the app !             
 
-#### Stack
+#### Technologies uses
 
-- #### API REST
-    - Node 18.x
-    - Express
-    - TypeScript
-    - Prisma
-    - passport
-    - jsonwebtoken
-    - MongoDB
-
-- #### Front SPA
-    - Vite + React
-    - TypeScript
-    - tailwind.css
-    - recoil
-    - @tanstack/react-query
-    - js-cookie
-    - axios
-    - react-markdown
-    - react-router-dom
-    - react-hook-form + yup
+- **Front-end** : React, TypeScript, tailwind.css
+- **Back-end** : Node, Express, TypeScript, Prisma, MongoDB, passport (Github API)
