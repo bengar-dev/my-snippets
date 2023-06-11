@@ -8,6 +8,7 @@ import { SiJavascript, SiTypescript } from "react-icons/si";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaDocker, FaJava, FaPhp, FaPython, FaReact } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { BsFiletypeYml } from "react-icons/bs";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -78,5 +79,7 @@ function handleLanguageIcons(language: Language) {
       return <VscTerminalBash />;
     case "php":
       return <FaPhp />;
+    case "yml":
+      return <BsFiletypeYml />;
   }
 }
