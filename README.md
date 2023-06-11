@@ -24,12 +24,12 @@ If you have any suggestions for improvement, please let me know.
 - Add confirmation modal while deleting
 - Update UI for create snippet form
 - Make the app responsive for mobil
-- Possibilty to tag your snippet
-- Research system by title and tags
+- Possibilty to tag your snippet ⏳
+- Research system by title and tags ⏳
 - Organize snipets order
 - Download .png snippet directly
 - Edit snippet
-- User custom settings like Syntax highlight
+- User custom settings like Syntax highlight ⏳
 - Update security points
 - Add translates keys i18n
 - Creating Landing page
