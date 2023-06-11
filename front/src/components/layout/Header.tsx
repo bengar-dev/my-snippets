@@ -5,6 +5,7 @@ import { useGetProfil } from "../../hooks/user/useGetProfil";
 import { useNavigate } from "react-router-dom";
 import { DropdownMenu } from "../ui/DropdownMenu";
 import { ToasterNotif } from "../ui/ToasterNotif";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -27,8 +28,10 @@ export const Header = () => {
           My<span>Snippets</span>
         </span>
       </div>
-      <div className="font-medium text-base text-yellow-200">
-        <p>⚠️ This is a beta version, more features are coming</p>
+      <div className="font-bold text-yellow-200 hover:text-white">
+        <Link to="/about">
+          ⚠️ This is a beta version, more features are coming
+        </Link>
       </div>
       {data && (
         <div className="flex items-center space-x-2">
