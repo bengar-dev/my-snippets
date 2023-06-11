@@ -6,7 +6,7 @@ import { Language } from "../types/language/language.types";
 import { VscTerminalBash } from "react-icons/vsc";
 import { SiJavascript, SiTypescript } from "react-icons/si";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { FaDocker, FaJava, FaPython, FaReact } from "react-icons/fa";
+import { FaDocker, FaJava, FaPhp, FaPython, FaReact } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
 interface Props {
@@ -68,7 +68,7 @@ function handleLanguageIcons(language: Language) {
       return <FaJava />;
     case "python":
       return <FaPython />;
-    case "react":
+    case "jsx":
       return <FaReact />;
     case "typescript":
       return <SiTypescript />;
@@ -76,5 +76,7 @@ function handleLanguageIcons(language: Language) {
       return <SiJavascript />;
     case "bash":
       return <VscTerminalBash />;
+    case "php":
+      return <FaPhp />;
   }
 }

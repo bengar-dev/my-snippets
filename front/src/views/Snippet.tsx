@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Snippet as SnippetType } from "../types/snippet/snippet.types";
 import { useParams } from "react-router-dom";
 import { SnippetCard } from "../components/ui/SnippetCard";
+import { SideMenu } from "../components/ui/SideMenu";
 
 export const Snippet: React.FC = () => {
   const params = useParams();
@@ -29,6 +30,9 @@ export const Snippet: React.FC = () => {
     <Main>
       <Header />
       <MainContent>
+        <div className="fixed w-1/6 pl-4">
+          <SideMenu snippetArray={preview} />
+        </div>
         <div className="mt-8 flex flex-col gap-6 items-center justify-center w-1/2 mx-auto">
           {preview.map((el, index) => (
             <SnippetCard

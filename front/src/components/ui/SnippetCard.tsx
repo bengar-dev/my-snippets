@@ -50,6 +50,7 @@ export const SnippetCard: React.FC<Props> = ({
       <>
         <div className="flex items-center justify-between">
           <h2
+            id={`snippet-${id}`}
             className="flex items-center space-x-2 font-bold cursor-pointer"
             onClick={() => setToggle(!toggle)}
           >

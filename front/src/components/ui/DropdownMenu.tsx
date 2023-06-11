@@ -1,18 +1,21 @@
+import toast from "react-hot-toast";
 import { BiLogOutCircle } from "react-icons/bi";
 import { Button } from "./Button";
-import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useGetLogout } from "../../hooks/user/useGetLogout";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
 export const DropdownMenu: React.FC<Props> = ({ children }) => {
-  const navigate = useNavigate();
+  const { mutateAsync } = useGetLogout();
 
-  const handleLogout = () => {
-    Cookies.remove("utk");
-    navigate("/signin");
+  const handleLogout = async () => {
+    toast.promise(mutateAsync(), {
+      loading: "Logging out...",
+      success: "Logged out successfully",
+      error: "Error logging out",
+    });
   };
 
   return (
