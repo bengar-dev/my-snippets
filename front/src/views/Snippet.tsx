@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { Header } from "../components/layout/Header";
 import { Main } from "../templates/Main";
 import { MainContent } from "../templates/MainContent";
-import { snippetsState } from "../atoms/snippets.atoms";
+import { previewSnippetsState, snippetsState } from "../atoms/snippets.atoms";
 import { useEffect, useState } from "react";
 import { Snippet as SnippetType } from "../types/snippet/snippet.types";
 import { useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ import { SideMenu } from "../components/ui/SideMenu";
 export const Snippet: React.FC = () => {
   const params = useParams();
   const [snippet] = useRecoilState(snippetsState);
-  const [preview, setPreview] = useState<SnippetType[]>([]);
+  const [preview, setPreview] = useRecoilState(previewSnippetsState);
 
   useEffect(() => {
     if (snippet.length > 0 && preview.length === 0) {
@@ -24,7 +24,7 @@ export const Snippet: React.FC = () => {
     ) {
       setPreview(snippet.filter((el) => el.language?.logo === params.name));
     }
-  }, [snippet, preview, params.name]);
+  }, [snippet, preview, params.name, setPreview]);
 
   return (
     <Main>
@@ -40,6 +40,7 @@ export const Snippet: React.FC = () => {
               id={el.id}
               code={el.code}
               title={el.title}
+              lengthArray={preview.length}
             />
           ))}
         </div>

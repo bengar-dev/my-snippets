@@ -10,23 +10,26 @@ import { BiCopy, BiTrash } from "react-icons/bi";
 import { BsFiletypePng } from "react-icons/bs";
 import { useDeleteSnipper } from "../../hooks/snippets/useDeleteSnippet";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { previewSnippetsState } from "../../atoms/snippets.atoms";
 
 interface Props {
   title: string;
   code: string;
+  lengthArray: number;
   id?: string;
-  isOpen?: boolean;
 }
 
 export const SnippetCard: React.FC<Props> = ({
   id,
   code,
-  isOpen = true,
   title,
+  lengthArray,
 }) => {
   const navigate = useNavigate();
-  const [toggle, setToggle] = useState<boolean>(isOpen);
+  const [toggle, setToggle] = useState<boolean>(true);
   const { mutateAsync } = useDeleteSnipper();
+  const [preview, setPreview] = useRecoilState(previewSnippetsState);
 
   const handleCopyMarkdownText = (text: string) => {
     if (!text) return;
@@ -42,7 +45,11 @@ export const SnippetCard: React.FC<Props> = ({
       success: "Snippet deleted",
       error: "Error while deleting snippet",
     });
-    navigate("/");
+    if (lengthArray - 1 === 0) {
+      navigate("/");
+    } else {
+      setPreview(preview.filter((el) => el.id !== id));
+    }
   };
 
   return (

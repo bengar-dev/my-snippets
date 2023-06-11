@@ -5,3 +5,8 @@ export const snippetsState = atom<Snippet[]>({
   key: "snippets",
   default: [],
 });
+
+export const previewSnippetsState = atom<Snippet[]>({
+  key: "preview_snippets",
+  default: [],
+});
