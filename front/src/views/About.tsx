@@ -54,12 +54,12 @@ export const About = () => {
               <li>Add confirmation modal while deleting ✅</li>
               <li>Update UI for create snippet form ✅</li>
               <li>Make the app responsive for mobile</li>
-              <li>Possibilty to tag your snippet</li>
-              <li>Research system by title and tags</li>
+              <li>Possibilty to tag your snippet ⏳</li>
+              <li>Research system by title and tags ⏳</li>
               <li>Organize snipets order</li>
               <li>Download .png snippet directly</li>
               <li>Edit snippet</li>
-              <li>User custom settings like Syntax highlight</li>
+              <li>User custom settings like Syntax highlight ⏳</li>
               <li>Update security points</li>
               <li>Add translates keys i18n</li>
               <li>Creating Landing page</li>
