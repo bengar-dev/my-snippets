@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "./Button";
 import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
@@ -95,29 +95,31 @@ export const SnippetCard: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <ReactMarkdown
-          children={toggle ? code : code.slice(0, 100)}
-          components={{
-            code({ inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || "");
-              return !inline && match ? (
-                <div className="hello">
-                  <SyntaxHighlighter
-                    {...props}
-                    children={String(children).replace(/\n$/, "")}
-                    style={atomDark}
-                    language={match[1]}
-                    PreTag="div"
-                  />
-                </div>
-              ) : (
-                <code {...props} className={className}>
-                  {children}
-                </code>
-              );
-            },
-          }}
-        />
+        <div className="mt-2 mockup-window border border-violet-800 bg-violet-900">
+          <ReactMarkdown
+            children={toggle ? code : code.slice(0, 100)}
+            components={{
+              code({ inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || "");
+                return !inline && match ? (
+                  <div className="hello">
+                    <SyntaxHighlighter
+                      {...props}
+                      children={String(children).replace(/\n$/, "")}
+                      style={a11yDark}
+                      language={match[1]}
+                      PreTag="div"
+                    />
+                  </div>
+                ) : (
+                  <code {...props} className={className}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          />
+        </div>
       </>
     </div>
   );
