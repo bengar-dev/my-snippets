@@ -7,7 +7,6 @@ import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 import { BiCopy, BiTrash } from "react-icons/bi";
-import { BsFiletypePng } from "react-icons/bs";
 import { useDeleteSnipper } from "../../hooks/snippets/useDeleteSnippet";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
