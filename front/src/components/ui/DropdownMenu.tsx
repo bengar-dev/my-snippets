@@ -36,6 +36,7 @@ export const DropdownMenu: React.FC<Props> = ({ children }) => {
           icon={<BiLogOutCircle className="text-xl" />}
           variant="primary"
           func={handleLogout}
+          fullSize
         />
       </ul>
     </div>

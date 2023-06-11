@@ -9,6 +9,7 @@ interface Props {
   shadow?: boolean;
   active?: boolean;
   loading?: boolean;
+  fullSize?: boolean;
 }
 
 type VariantButton =
@@ -23,6 +24,7 @@ export const Button: React.FC<Props> = ({
   icon,
   func,
   loading = false,
+  fullSize = false,
   shadow,
   type,
   variant,
@@ -36,10 +38,9 @@ export const Button: React.FC<Props> = ({
           func(event);
         }
       }}
-      className={`transition-all flex items-center space-x-2 text-white font-bold py-2 px-4 rounded w-max ${handleStyle(
-        active,
-        variant
-      )} ${shadow ? " hover:shadow-lg" : ""}`}
+      className={`transition-all flex items-center space-x-2 text-white font-bold py-2 px-4 rounded ${
+        fullSize ? "w-full" : "w-max"
+      } ${handleStyle(active, variant)} ${shadow ? " hover:shadow-lg" : ""}`}
     >
       {loading ? (
         <RiLoader5Fill className="animate-spin text-2xl" />
