@@ -21,7 +21,7 @@ interface Props {
 export const SnippetCard: React.FC<Props> = ({
   id,
   code,
-  isOpen = false,
+  isOpen = true,
   title,
 }) => {
   const navigate = useNavigate();

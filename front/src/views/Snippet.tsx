@@ -34,13 +34,12 @@ export const Snippet: React.FC = () => {
           <SideMenu snippetArray={preview} />
         </div>
         <div className="mt-8 flex flex-col gap-6 items-center justify-center w-1/2 mx-auto">
-          {preview.map((el, index) => (
+          {preview.map((el) => (
             <SnippetCard
               key={el.id}
               id={el.id}
               code={el.code}
               title={el.title}
-              isOpen={index === 0}
             />
           ))}
         </div>
