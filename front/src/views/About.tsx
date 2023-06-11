@@ -51,9 +51,9 @@ export const About = () => {
               <li>Delete snippet ✅</li>
               <li>Copy code snippet button ✅</li>
               <li>Side menu to get an snippet's overview ✅</li>
-              <li>Add confirmation modal while deleting</li>
-              <li>Update UI for create snippet form</li>
-              <li>Make the app responsive for mobil</li>
+              <li>Add confirmation modal while deleting ✅</li>
+              <li>Update UI for create snippet form ✅</li>
+              <li>Make the app responsive for mobile</li>
               <li>Possibilty to tag your snippet</li>
               <li>Research system by title and tags</li>
               <li>Organize snipets order</li>

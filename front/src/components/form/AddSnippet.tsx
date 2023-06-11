@@ -77,7 +77,7 @@ export const AddSnippet: React.FC = () => {
             name="code"
             control={control}
             render={({ field }) => (
-              <InputTextArea label="Snippet" field={field} />
+              <InputTextArea label="Snippet" field={field} variant="code" />
             )}
           />
 

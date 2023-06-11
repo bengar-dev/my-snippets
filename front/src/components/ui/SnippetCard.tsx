@@ -12,6 +12,7 @@ import { useDeleteSnipper } from "../../hooks/snippets/useDeleteSnippet";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { previewSnippetsState } from "../../atoms/snippets.atoms";
+import { Modal } from "./Modal";
 
 interface Props {
   title: string;
@@ -38,6 +39,14 @@ export const SnippetCard: React.FC<Props> = ({
     toast.success("Copied to clipboard");
   };
 
+  const handleOpenModal = (id?: string) => {
+    if (!id) return;
+    // function from daisyUi
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    window[`modal-${id}`].showModal();
+  };
+
   const handleDeleteSnippet = () => {
     if (!id) return;
     toast.promise(mutateAsync(id), {
@@ -55,6 +64,17 @@ export const SnippetCard: React.FC<Props> = ({
   return (
     <div className="w-full shadow-2xl">
       <>
+        <Modal
+          id={`modal-${id}`}
+          title="Delete Snippet"
+          buttonValue="Confirm Delete"
+          func={handleDeleteSnippet}
+        >
+          <p className="my-4">
+            Are you sure to delete <span className="font-bold">{title}</span>{" "}
+            snippet ?
+          </p>
+        </Modal>
         <div className="flex items-center justify-between">
           <h2
             id={`snippet-${id}`}
@@ -71,12 +91,12 @@ export const SnippetCard: React.FC<Props> = ({
             </div>
           </h2>
           <div className="flex space-x-1 items-center">
-            <Button
+            {/* <Button
               type="button"
               icon={<BsFiletypePng />}
               variant="disabled"
               func={() => toast.error("Feature not available yet")}
-            />
+            /> */}
             <div className="tooltip" data-tip="copy">
               <Button
                 type="button"
@@ -90,7 +110,7 @@ export const SnippetCard: React.FC<Props> = ({
                 type="button"
                 icon={<BiTrash />}
                 variant="delete"
-                func={handleDeleteSnippet}
+                func={() => handleOpenModal(id)}
               />
             </div>
           </div>
