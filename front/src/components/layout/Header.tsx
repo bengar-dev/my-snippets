@@ -7,7 +7,7 @@ import { DropdownMenu } from "../ui/DropdownMenu";
 import { ToasterNotif } from "../ui/ToasterNotif";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const { data, error } = useGetProfil();

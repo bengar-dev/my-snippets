@@ -1,12 +1,16 @@
-## My snippets
+# My snippets
 
-Tool for managing and saving code snippets.
+### My snippets is a web application that allows you to save your code snippets in a simple way.
 
-Initially, it was a personal tool that I decided to release for all developer users. As a junior developer, I used to save all my code snippets and examples in a personal Discord server. However, this became a bit inconvenient, so I decided to create my own tool.
+This project was created with the intention of practicing the use of React, Typescript, Node, Express...
 
-If you'd like to give it a try, you'll need a **GitHub account for authentication**. Once you have an account, adding your first snippet will be a breeze. There are numerous languages available, such as **JavaScript, TypeScript, Python, Docker, Bash, Java, PHP**, and more languages are being added regularly.
+The application is still in beta version, so it is possible that you will find some bugs. If you find any, please report it to me on my github page/repo. **[Github Repository](https://github.com/bengar-dev/my-snippets)**
 
-<u>Live beta application is available here</u> : [my-snippets](https://my-snippets-alpha.vercel.app)
+If you have any suggestions for improvement, please let me know.
+
+**Beta will run until the end of the year 2023**, then the application will be in production, but don't worry you will not loose your snippets. 😉
+
+<u>Live beta application is available here</u> : **[my-snippets](https://my-snippets-alpha.vercel.app)**
 
 #### Available features
 
@@ -14,17 +18,31 @@ If you'd like to give it a try, you'll need a **GitHub account for authenticatio
 - Organise snippets by languages
 - Copy saved snippet
 
-#### Coming features
+#### Features
 
-- Delete snippet
-- Edit snippet
-- Side menu to get overview of language's snippets.
-- Confirm modal
-- Notification service
-- Tags system for snippets
-- Research by title + tags
+<li>GitHub Authentification ✅</li>
+<li>Logout route ✅</li>
+<li>Create snippet ✅</li>
+<li>Snippet card with syntax highlighting ✅</li>
+<li>Delete snippet ✅</li>
+<li>Copy code snippet button ✅</li>
+<li>Side menu to get an snippet's overview ✅</li>
+<li>Add confirmation modal while deleting</li>
+<li>Update UI for create snippet form</li>
+<li>Make the app responsive for mobil</li>
+<li>Possibilty to tag your snippet</li>
+<li>Research system by title and tags</li>
+<li>Organize snipets order</li>
+<li>Download .png snippet directly</li>
+<li>Edit snippet</li>
+<li>User custom settings like Syntax highlight</li>
+<li>Update security points</li>
+<li>Add translates keys i18n</li>
+<li>Creating Landing page</li>
+<li>Find Offers plan</li>
+<li>🚀 Run in production the app !</li>             
 
-### Technologies
+#### Stack
 
 - #### API REST
     - Node 18.x
