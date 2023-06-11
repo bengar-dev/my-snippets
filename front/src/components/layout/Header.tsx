@@ -30,7 +30,7 @@ export const Header = () => {
       </div>
       <div className="font-bold text-yellow-200 hover:text-white">
         <Link to="/about">
-          ⚠️ This is a beta version, more features are coming
+          ⚠️ This is a beta version, more informations here
         </Link>
       </div>
       {data && (
