@@ -11,7 +11,7 @@ export const useGetLogout = () => {
       );
     },
     onSuccess() {
-      window.location.href = import.meta.env.VITE_APP_URL + "signin";
+      window.location.href = import.meta.env.VITE_APP_URL;
     },
     onError(err) {
       console.log(err);
