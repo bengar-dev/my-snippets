@@ -61,7 +61,11 @@ export const AddSnippet: React.FC = () => {
                   <InputSelect
                     defaultValues="Select a language"
                     label="Language"
-                    values={languages.data}
+                    values={languages.data.sort((a, b) => {
+                      if (a.name < b.name) return -1;
+                      if (a.name > b.name) return 1;
+                      return 0;
+                    })}
                     field={field}
                   />
                 )}
