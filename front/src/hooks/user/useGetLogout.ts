@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const useGetLogout = () => {
   return useMutation({
@@ -11,6 +12,7 @@ export const useGetLogout = () => {
       );
     },
     onSuccess() {
+      Cookies.remove("utk");
       window.location.href = import.meta.env.VITE_APP_URL;
     },
     onError(err) {
