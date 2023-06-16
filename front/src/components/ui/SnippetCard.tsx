@@ -12,11 +12,13 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { previewSnippetsState } from "../../atoms/snippets.atoms";
 import { Modal } from "./Modal";
+import { SnippetTag } from "../../types/snippet/snippet.types";
 
 interface Props {
   title: string;
   code: string;
   lengthArray: number;
+  tags?: SnippetTag[];
   id?: string;
 }
 
@@ -25,6 +27,7 @@ export const SnippetCard: React.FC<Props> = ({
   code,
   title,
   lengthArray,
+  tags,
 }) => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState<boolean>(true);
@@ -75,20 +78,32 @@ export const SnippetCard: React.FC<Props> = ({
           </p>
         </Modal>
         <div className="flex items-center justify-between">
-          <h2
-            id={`snippet-${id}`}
-            className="flex items-center space-x-2 font-bold cursor-pointer"
-            onClick={() => setToggle(!toggle)}
-          >
-            <span>{title}</span>
-            <div
-              className={`transition-all duration-500 ${
-                toggle ? "rotate-180" : "rotate-0"
-              }`}
+          <div className="flex flex-col space-y-2">
+            <h2
+              id={`snippet-${id}`}
+              className="flex items-center space-x-2 font-bold cursor-pointer"
+              onClick={() => setToggle(!toggle)}
             >
-              <IoIosArrowDropdownCircle className="text-2xl text-violet-400" />
-            </div>
-          </h2>
+              <span>{title}</span>
+              <div
+                className={`transition-all duration-500 ${
+                  toggle ? "rotate-180" : "rotate-0"
+                }`}
+              >
+                <IoIosArrowDropdownCircle className="text-2xl text-violet-400" />
+              </div>
+            </h2>
+            {tags &&
+              tags.map((el) => (
+                <span
+                  key={el.tagId}
+                  className="text-xs text-gray-100 p-1 px-2 rounded-full bg-violet-700 w-max"
+                >
+                  {el.Tag.name}
+                </span>
+              ))}
+          </div>
+
           <div className="flex space-x-1 items-center">
             {/* <Button
               type="button"

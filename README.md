@@ -21,10 +21,10 @@ If you have any suggestions for improvement, please let me know.
 - Delete snippet ✅
 - Copy code snippet button ✅
 - Side menu to get an snippet's overview ✅
-- Add confirmation modal while deleting
+- Add confirmation modal while deleting ✅
 - Update UI for create snippet form
 - Make the app responsive for mobil
-- Possibilty to tag your snippet ⏳
+- Possibilty to tag your snippet ✅
 - Research system by title and tags ⏳
 - Organize snipets order
 - Download .png snippet directly

@@ -40,6 +40,7 @@ export const Snippet: React.FC = () => {
               code={el.code}
               title={el.title}
               lengthArray={preview.length}
+              tags={el.SnippetsTag || []}
             />
           ))}
         </div>

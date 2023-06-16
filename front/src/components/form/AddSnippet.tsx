@@ -8,18 +8,29 @@ import { InputTextArea } from "./inputs/InputTextArea";
 import { Controller, useForm } from "react-hook-form";
 import { addSnippetSchema } from "../../schemas/snippets";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Snippet } from "../../types/snippet/snippet.types";
+import { Snippet, Tag } from "../../types/snippet/snippet.types";
 import { useCreateSnippet } from "../../hooks/snippets/useCreateSnippet";
+import { useRecoilState } from "recoil";
+import { snippetsState } from "../../atoms/snippets.atoms";
+import { useEffect, useState } from "react";
 
 export const AddSnippet: React.FC = () => {
   const { data: languages } = useGetLanguages();
   const { mutateAsync, isLoading } = useCreateSnippet();
+  const [snippet] = useRecoilState(snippetsState);
+  const [tags, setTags] = useState<Tag[]>([]);
 
-  const { control, handleSubmit, reset } = useForm({
+  useEffect(() => {
+    const TagsArray = formatDataToGetTagsArray(snippet);
+    if (TagsArray.length > 0) setTags(TagsArray);
+  }, [snippet, tags]);
+
+  const { control, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
       title: "",
       code: "",
       languageId: "",
+      tagName: "",
     },
     resolver: yupResolver(addSnippetSchema),
   });
@@ -31,6 +42,10 @@ export const AddSnippet: React.FC = () => {
       error: "Error while adding snippet",
     });
     reset();
+  };
+
+  const handleActiveTag = (value: string) => {
+    setValue("tagName", value);
   };
 
   return (
@@ -73,6 +88,31 @@ export const AddSnippet: React.FC = () => {
             </div>
           </div>
 
+          <div className="w-full flex flex-col ">
+            <div className="w-1/4">
+              <Controller
+                name="tagName"
+                control={control}
+                render={({ field }) => (
+                  <InputValue label="Tag" type="text" field={field} />
+                )}
+              />
+            </div>
+            <div className="mt-1 flex items-center space-x-2">
+              {tags.length > 0 &&
+                tags.map((el, index) => (
+                  <Button
+                    key={`tag-${index}`}
+                    type="button"
+                    value={el.name}
+                    variant="outline-primary"
+                    func={() => handleActiveTag(el.name)}
+                    active={Boolean(el.active)}
+                  />
+                ))}
+            </div>
+          </div>
+
           <Controller
             name="code"
             control={control}
@@ -94,3 +134,27 @@ export const AddSnippet: React.FC = () => {
     </form>
   );
 };
+
+function formatDataToGetTagsArray(data: Snippet[]): Tag[] {
+  const dataFiltered = data.filter(
+    (item) => item.SnippetsTag && item.SnippetsTag.length > 0
+  );
+  const newArray: Tag[] = [];
+
+  for (const element of dataFiltered) {
+    if (!element.SnippetsTag) continue;
+    else {
+      element.SnippetsTag.forEach((item) => {
+        newArray.push(item.Tag);
+      });
+    }
+  }
+
+  return newArray.reduce((acc: Tag[], current: Tag) => {
+    const x = acc.find((item) => item.name === current.name);
+    if (!x) {
+      return acc.concat([current]);
+    }
+    return acc;
+  }, []);
+}
