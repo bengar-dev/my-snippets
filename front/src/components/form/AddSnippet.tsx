@@ -64,7 +64,7 @@ export const AddSnippet: React.FC = () => {
                 name="title"
                 control={control}
                 render={({ field }) => (
-                  <InputValue type="text" label="Title" field={field} />
+                  <InputValue type="text" label="Title *" field={field} />
                 )}
               />
             </div>
@@ -75,7 +75,7 @@ export const AddSnippet: React.FC = () => {
                 render={({ field }) => (
                   <InputSelect
                     defaultValues="Select a language"
-                    label="Language"
+                    label="Language *"
                     values={languages.data.sort((a, b) => {
                       if (a.name < b.name) return -1;
                       if (a.name > b.name) return 1;
@@ -117,7 +117,7 @@ export const AddSnippet: React.FC = () => {
             name="code"
             control={control}
             render={({ field }) => (
-              <InputTextArea label="Snippet" field={field} variant="code" />
+              <InputTextArea label="Snippet *" field={field} variant="code" />
             )}
           />
 
