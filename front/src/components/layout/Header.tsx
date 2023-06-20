@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { AiOutlineCode, AiOutlineSearch } from "react-icons/ai";
 import { useGetProfil } from "../../hooks/user/useGetProfil";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { DropdownMenu } from "../ui/DropdownMenu";
 import { ToasterNotif } from "../ui/ToasterNotif";
 import { Link } from "react-router-dom";
