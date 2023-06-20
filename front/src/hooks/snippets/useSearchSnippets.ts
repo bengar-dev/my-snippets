@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 
 export const useSearchSnippets = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   const [searchSnippets, setSearchSnippets] =
     useRecoilState(searchSnippetState);
   return useMutation({
