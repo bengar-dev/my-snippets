@@ -55,7 +55,7 @@ export const About = () => {
               <li>Update UI for create snippet form ✅</li>
               <li>Make the app responsive for mobile</li>
               <li>Possibilty to tag your snippet ✅</li>
-              <li>Research system by title and tags ⏳</li>
+              <li>Research system by title and tags ✅</li>
               <li>Organize snipets order</li>
               <li>Download .png snippet directly</li>
               <li>Edit snippet</li>

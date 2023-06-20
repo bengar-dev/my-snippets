@@ -25,7 +25,7 @@ If you have any suggestions for improvement, please let me know.
 - Update UI for create snippet form
 - Make the app responsive for mobil
 - Possibilty to tag your snippet ✅
-- Research system by title and tags ⏳
+- Research system by title and tags ✅
 - Organize snipets order
 - Download .png snippet directly
 - Edit snippet
