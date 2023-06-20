@@ -6,3 +6,7 @@ export const addSnippetSchema = yup.object().shape({
   languageId: yup.string().required("Language is required"),
   tagName: yup.string(),
 });
+
+export const searchSnippetSchema = yup.object().shape({
+  value: yup.string(),
+});

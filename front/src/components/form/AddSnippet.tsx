@@ -22,7 +22,8 @@ export const AddSnippet: React.FC = () => {
 
   useEffect(() => {
     const TagsArray = formatDataToGetTagsArray(snippet);
-    if (TagsArray.length > 0) setTags(TagsArray);
+    if (TagsArray.length > 0 && TagsArray.length !== tags.length)
+      setTags(TagsArray);
   }, [snippet, tags]);
 
   const { control, handleSubmit, reset, setValue } = useForm({

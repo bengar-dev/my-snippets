@@ -9,11 +9,11 @@ interface Props {
 
 export const InputValue: React.FC<Props> = ({ field, type, label }) => {
   return (
-    <div className="flex flex-col space-y-1 w-full">
-      <span className="font-bold">{label}</span>
+    <div className="flex flex-col w-full">
+      {label && <span className="mt-1 font-bold">{label}</span>}
       <input
         type={type}
-        className="p-2 outline-none rounded text-violet-950 font-bold"
+        className="p-2 outline-none rounded text-violet-950 font-bold bg-white"
         {...field}
       />
     </div>

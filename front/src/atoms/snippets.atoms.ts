@@ -10,3 +10,8 @@ export const previewSnippetsState = atom<Snippet[]>({
   key: "preview_snippets",
   default: [],
 });
+
+export const searchSnippetState = atom<Snippet[]>({
+  key: "search_snippets",
+  default: [],
+});

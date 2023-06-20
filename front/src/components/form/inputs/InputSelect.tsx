@@ -19,7 +19,7 @@ export const InputSelect: React.FC<Props> = ({
     <div className="flex flex-col space-y-1 w-full">
       <span className="font-bold">{label}</span>
       <select
-        className="p-2 outline-none rounded text-violet-950 font-bold"
+        className="p-2 outline-none rounded text-violet-950 font-bold bg-white"
         {...field}
       >
         <option>{defaultValues}</option>
