@@ -15,7 +15,6 @@ import { useSearchSnippets } from "../../hooks/snippets/useSearchSnippets";
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
-  const params = useParams();
 
   const { mutateAsync } = useSearchSnippets();
   const { data, error } = useGetProfil();

@@ -6,7 +6,7 @@ import { searchSnippetState } from "../atoms/snippets.atoms";
 import { SnippetCard } from "../components/ui/SnippetCard";
 
 export const Search = () => {
-  const [searchSnipets, setSearchSnipets] = useRecoilState(searchSnippetState);
+  const [searchSnipets] = useRecoilState(searchSnippetState);
 
   return (
     <Main>
