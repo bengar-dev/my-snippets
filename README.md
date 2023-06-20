@@ -12,7 +12,7 @@ If you have any suggestions for improvement, please let me know.
 
 <u>Live beta application is available here</u> : **[my-snippets](https://my-snippets-alpha.vercel.app)**
 
-#### Features
+#### Roadmap
 
 - GitHub Authentification ✅
 - Logout route ✅

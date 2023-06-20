@@ -40,9 +40,7 @@ export const About = () => {
               , then the application will be in production, but don't worry you
               will not loose your snippets. 😉
             </p>
-            <h2 className="mt-6 text-2xl font-bold text-violet-300">
-              Features
-            </h2>
+            <h2 className="mt-6 text-2xl font-bold text-violet-300">Roadmap</h2>
             <ul className="font-medium text-lg list-disc p-4">
               <li>GitHub Authentification ✅</li>
               <li>Logout route ✅</li>
