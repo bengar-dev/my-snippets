@@ -26,9 +26,11 @@ If you have any suggestions for improvement, please let me know.
 - Make the app responsive for mobil
 - Possibilty to tag your snippet ✅
 - Research system by title and tags ✅
+- Optimize request and loading ⏳
 - Organize snipets order
 - Download .png snippet directly
 - Edit snippet
+- Sign-in/up with email address ⏳
 - User custom settings like Syntax highlight ⏳
 - Update security points
 - Add translates keys i18n
