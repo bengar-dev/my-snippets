@@ -17,7 +17,6 @@ import { Loading } from "../ui/Loading.tsx";
 export const Header: React.FC = () => {
   const navigate = useNavigate();
 
-  const cookie = Cookies.get("utk");
   const { mutateAsync } = useSearchSnippets();
   const { data, error, isLoading } = useGetProfil();
   const { control, handleSubmit } = useForm({
@@ -28,14 +27,11 @@ export const Header: React.FC = () => {
   });
 
   useEffect(() => {
-    if (!cookie) {
-      navigate("/signin");
-    }
     if (error && !data) {
       Cookies.remove("utk");
       navigate("/signin");
     }
-  }, [cookie, data, error, navigate]);
+  }, [data, error, navigate]);
 
   const onSubmit = (data: { value: string }) => {
     mutateAsync(data.value);
