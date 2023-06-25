@@ -13,6 +13,9 @@ import { useRecoilState } from "recoil";
 import { previewSnippetsState } from "../../atoms/snippets.atoms";
 import { Modal } from "./Modal";
 import { SnippetTag } from "../../types/snippet/snippet.types";
+import { toPng } from "html-to-image";
+import download from "downloadjs";
+import { BsFiletypePng } from "react-icons/bs";
 
 interface Props {
   title: string;
@@ -34,11 +37,28 @@ export const SnippetCard: React.FC<Props> = ({
   const { mutateAsync } = useDeleteSnipper();
   const [preview, setPreview] = useRecoilState(previewSnippetsState);
 
-  const handleCopyMarkdownText = (text: string) => {
+  const handleCopyMarkdownText = async (text: string) => {
     if (!text) return;
     const filterToCopyCode = text.replace(/```/g, "");
-    navigator.clipboard.writeText(filterToCopyCode);
+    await navigator.clipboard.writeText(filterToCopyCode);
     toast.success("Copied to clipboard");
+  };
+
+  const handleDownloadSnippet = async (id: string, name: string) => {
+    const slugifyName = name.toLowerCase().replace(/\s/g, "-");
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    await toast.promise(
+      toPng(element).then((dataUrl) => {
+        download(dataUrl, `${slugifyName}.png`);
+      }),
+      {
+        loading: "Downloading snippet...",
+        success: "Snippet downloaded",
+        error: "Error while downloading snippet",
+      }
+    );
   };
 
   const handleOpenModal = (id?: string) => {
@@ -49,9 +69,9 @@ export const SnippetCard: React.FC<Props> = ({
     window[`modal-${id}`].showModal();
   };
 
-  const handleDeleteSnippet = () => {
+  const handleDeleteSnippet = async () => {
     if (!id) return;
-    toast.promise(mutateAsync(id), {
+    await toast.promise(mutateAsync(id), {
       loading: "Deleting snippet...",
       success: "Snippet deleted",
       error: "Error while deleting snippet",
@@ -105,12 +125,11 @@ export const SnippetCard: React.FC<Props> = ({
           </div>
 
           <div className="flex space-x-1 items-center">
-            {/* <Button
+            <Button
               type="button"
               icon={<BsFiletypePng />}
-              variant="disabled"
-              func={() => toast.error("Feature not available yet")}
-            /> */}
+              func={() => handleDownloadSnippet(`snippet-code-${id}`, title)}
+            />
             <div className="tooltip" data-tip="copy">
               <Button
                 type="button"
@@ -129,7 +148,10 @@ export const SnippetCard: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <div className="mt-2 mockup-window border border-violet-800 bg-violet-900">
+        <div
+          className="mt-2 mockup-window border border-violet-800 bg-violet-900"
+          id={`snippet-code-${id}`}
+        >
           <ReactMarkdown
             children={toggle ? code : code.slice(0, 100)}
             components={{

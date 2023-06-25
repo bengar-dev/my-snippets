@@ -56,7 +56,7 @@ export const About = () => {
               <li>Optimize request and loading ⏳</li>
               <li>Research system by title and tags ✅</li>
               <li>Organize snipets order</li>
-              <li>Download .png snippet directly</li>
+              <li>Download .png snippet directly ✅</li>
               <li>Edit snippet</li>
               <li>Sign-in/up with email address ⏳</li>
               <li>User custom settings like Syntax highlight ⏳</li>

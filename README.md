@@ -28,7 +28,7 @@ If you have any suggestions for improvement, please let me know.
 - Research system by title and tags ✅
 - Optimize request and loading ⏳
 - Organize snipets order
-- Download .png snippet directly
+- Download .png snippet directly ✅
 - Edit snippet
 - Sign-in/up with email address ⏳
 - User custom settings like Syntax highlight ⏳
